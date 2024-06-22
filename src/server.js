@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 
-// Allows POST request to have JSON body content
+
+
+
+// Allows POST requests to have JSON body content
 app.use(express.json());
+
+
 
 app.get("/", (request, response, next) => {
 
@@ -12,11 +17,17 @@ app.get("/", (request, response, next) => {
 });
 
 
+
+const blogRouter = require("./controllers/BlogRouter.js");
+app.use("/blogs", blogRouter);
+
+
+
 app.get("*", (request, response, next) => {
-    response.status(404).json({
-        message:"404 Page not found."
-    })
-})
+	response.status(404).json({
+		message:"404 Page not found."
+	});
+});
 
 
 app.use((error, request, response, next) => {
@@ -28,5 +39,7 @@ app.use((error, request, response, next) => {
 
 
 module.exports = {
-    app
+	app
 }
+
+
