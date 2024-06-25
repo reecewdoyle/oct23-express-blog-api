@@ -70,4 +70,3 @@ const BlogModel = mongoose.model("Blog", blogSchema);
 module.exports = {
 	BlogModel
 }
-
